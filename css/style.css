@@ -95,8 +95,8 @@ img.aligncenter {
 }
 
 ul {
-    padding: 0;
-    list-style: none;
+    /* padding: 0; */
+    /* list-style: none; */
 }
 
 ol li ul li {
@@ -187,7 +187,7 @@ p {
 }
 
 .section {
-    padding: 180px 0;
+    padding: 5 rem 0;
     position: relative;
     display: block;
 }
