@@ -212,6 +212,16 @@
                                         <p> Options page </p>
                                     </li>
                                 </ul>
+                                <p>
+                                    The interesting aspect is how all components interact with the background script (although this may be due to WebExtension limitations).
+                                </p>
+                                <p>
+                                    A common design pattern that appears in the extension is the Observer design pattern due to how the various components interact by emitting events to the background script.
+
+                                    Most components are modularized, so it is clearer as to what module provides what function, while also having a couple of overrides to allow calling functions to customize functions.
+
+                                    The codebase also uses quite a few global variables as exports, which may be possible to refactor into imports to avoid mutation of state from the various components.
+                                </p>
                             </div>
                             <!-- end col -->
                         </div>
@@ -237,20 +247,12 @@
                                     popupView.jsx to return the render component</p>
                                 <p>
                                     It then tells React to render the component in the popup-container div. The
-                                    PopupController has a useEffect() hook that immediately:
+                                    PopupController has a useEffect() hook that starts recording (creates a ShimRecorder and sends message to background script,
+                                    calls startRecorder, which sends a message to background script to start
+                                    recording, which is picked up by recorder.js and calls startRecording in
+                                    voice.js)
+                                    after rendering the popup.
                                 </p>
-                                <ul>
-                                    <li>
-                                        <p>microphone permission</p>
-                                    </li>
-                                    <li>
-                                        <p>recording (creates a ShimRecorder and sends message to background script,
-                                            calls startRecorder, which sends a message to background script to start
-                                            recording, which is picked up by recorder.js and calls startRecording in
-                                            voice.js)
-                                            after rendering the popup.</p>
-                                    </li>
-                                </ul>
                                 <p>
                                     The logic to handle recording is done in vad.js. It starts a WebRTC session and
                                     creates a Promise that contains either the voice data or an error.
