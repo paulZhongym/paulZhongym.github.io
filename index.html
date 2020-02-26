@@ -170,6 +170,52 @@
                             <!-- end col -->
                         </div>
                         <!-- end row -->
+                        <div class="row">
+
+                            <div class="col-md-3">
+
+                                <!-- <a href="upload/thumbnail.png" data-rel="prettyPhoto"><img src="images/upload/sequence.svg" alt="" class="img-responsive img-thumbnail"></a> -->
+                            </div>
+
+                            <div class="col-md-12">
+                                <h4 id="line7_1">Javascript design pattern <a href="#top">#back to top</a></h4>
+                                <p>Module design pattern</p>
+                                <p>Every component is a module. In Javascript, module is an object with public and private parts.
+                                This is utilized well in the project because components need to share data and methods between each other.
+                                For example in the UML we can see how this design pattern helps to decouple <strong>background component</strong> and <strong>intents component</strong>.
+                                Background is responsible of running intents (in intentRunner.js) but the logic is in 
+                                intents component. So intents expose its data and functions to background through module design pattern.
+                                This way the implementation of intentRunner and implementation of the actual intents are decoupled.</p>
+                                    <p>Here is an example of on of the module from intent. </p>
+                            </div>
+                            <pre>
+                            <code>
+this.intents.bookmarks = (function() {
+    this.intentRunner.registerIntent({
+        name: "bookmarks.open",
+        description:
+        "This will search all your bookmarks for the given query",
+        examples: ["Open news bookmark"],
+        match: `
+        open [query] bookmark (for me |) in (this | current |) tab (for me |) [tab=this]
+        `,
+        async run(context) {
+        const bookmarks = await browser.bookmarks.search({});
+        for (const bookmark of bookmarks) {
+            bookmarksById.set(bookmark.id, bookmark.url);
+            });
+        }
+    };
+})();
+                                  
+                              </code>
+                            </pre>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
 
                         <div class="row">
 
