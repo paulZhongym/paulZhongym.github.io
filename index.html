@@ -270,6 +270,20 @@
                         </div>
 
                         <hr>
+                        <h4>Commentary</h4>
+                        <p>
+                            From our architectural analysis, we think the developers of firefox-voice designed a modular system that allows flexibility. 
+                            However, it looks like there's a somewhat <b>high degree of dependency coupling</b>.
+                            Some of the components like the Listener/Transcriber and Intent are both tightly 
+                            coupled with the Background Hub. For example, there is a lot of code interaction under 
+                            the "/extension/background" with several other components directly.
+                        </p>
+                        <p>
+                            To this end, one suggestion we recommend to the firefox-voice project would be to honour the <b>Single Responsibility Principle</b>
+                            and increase the coherence of the codebase by making more components to handle the responsibilities of the Listener/Transcriber. 
+                        </p>
+
+                        <hr>
 
                         <div class="row">
                             <div class="col-md-3">
@@ -455,12 +469,7 @@
                     </section>
                     <!-- end section -->
 
-
-
-
-
                     <section id="line11" class="section">
-
                         <div class="row">
                             <div class="col-md-12 left-align">
                                 <h2 class="dark-text">Copyright and license <a href="#top">#back to top</a>

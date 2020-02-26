@@ -78,7 +78,7 @@ h6 a {
 
 p {
     font-size: 16px;
-    font-weight: 600;
+    /* font-weight: 600; */
     line-height: 26px;
     letter-spacing: 0;
     margin-top: 15px;
